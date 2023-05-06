@@ -9,3 +9,6 @@
 6. 일정 거리 기준 떨어지면 가까워져라 플래그 보냄 -> 앱 알림 띠롱
 
 # 과정
+## 1. 개발환경 opencv 버전 확인
+<img width="128" alt="image" src="https://user-images.githubusercontent.com/103157798/236609004-6d17485c-9d12-4768-80fb-1a3229907caa.png">
+## 2.YOLOv5 설치
