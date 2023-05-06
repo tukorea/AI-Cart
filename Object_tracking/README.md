@@ -9,7 +9,3 @@
 6. 일정 거리 기준 떨어지면 가까워져라 플래그 보냄 -> 앱 알림 띠롱
 
 # 과정
-
-
-https://user-images.githubusercontent.com/103157798/236608592-9deffadb-7b5f-4d85-b40a-a1e4e6a520e6.mp4
-
