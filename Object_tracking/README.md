@@ -12,3 +12,8 @@
 ## 1. 개발환경 opencv 버전 확인
 <img width="128" alt="image" src="https://user-images.githubusercontent.com/103157798/236609004-6d17485c-9d12-4768-80fb-1a3229907caa.png">
 ## 2.YOLOv5 설치
+Yolov5 Repository
+Python 3.9.13
+PyTorch
+CUDA
+
