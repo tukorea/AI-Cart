@@ -17,43 +17,46 @@ class Clustering:
         self.rate = rospy.Rate(20)  # 30Hz로 토픽 발행
         self.motor_pub = rospy.Publisher('ackermann_cmd', AckermannDriveStamped, queue_size=30)  # motor msg publisher
         self.motor_msg = AckermannDriveStamped()  # xycar 제어를 위한 속도, 조향각 정보를 담고 있는 xycar_motor 호출
-        self.motor_msg.drive.speed = 5
+        self.motor_msg.drive.speed = 0
         self.motor_msg.drive.steering_angle = 0
         ###################
         epsilon = 0.2   # 중심점 기준 반경 길이 (meter)
         min_sample = 20  # 클러스터로 묶기위한 최소 포인트 갯수, 이보다 작으면 노이즈로 간주
 
-        self.range1_sin = np.sin(np.radians(np.linspace(0, 90, 288)))     # 좌 = 90 ~ 180
-        self.range1_cos = np.cos(np.radians(np.linspace(0, 90, 288)))
+        self.range1_sin = np.sin(np.radians(np.linspace(90, 180, 126)))     # 좌 = 90 ~ 180
+        self.range1_cos = np.cos(np.radians(np.linspace(90, 180, 126)))
 
-        self.range2_sin = np.sin(np.radians(np.linspace(90, 180, 288)))    # 우 = 180 ~ 270
-        self.range2_cos = np.cos(np.radians(np.linspace(90, 180, 288)))
+        self.range2_sin = np.sin(np.radians(np.linspace(180, 270, 126)))    # 우 = 180 ~ 270
+        self.range2_cos = np.cos(np.radians(np.linspace(180, 270, 126)))
 
         self.model = DBSCAN(eps=epsilon, min_samples=min_sample, algorithm='ball_tree', leaf_size=20)
         self.rp = RP()
         #################
         self.steering_angle = 0
-
-        self.count = 0
-        self.wait_flag = 0
+        self.flag = 0
+        # self.count = 0
+        # self.wait_flag = 0
        
-        self.BOTH, self.LEFT, self.RIGHT = 0, 1, 2
-        self.roi_setting = self.BOTH
-        self.detected = 0
+        # self.BOTH, self.LEFT, self.RIGHT = 0, 1, 2
+        # self.roi_setting = self.BOTH
 
-        self.mission_finished = False
+        # self.mission_finished = False
         #################
 
     def coordinate_transform(self, distance):
-
+        
+        distance = distance[len(distance)//2:]
+        
         # shape: (180, 1)   270도 = 378 (좌 = 90 ~ 180) # 126:252
-        coordinate_x1 = np.array([distance[576:864] * self.range1_sin]).reshape(-1, 1)
-        coordinate_y1 = np.array([distance[576:864] * self.range1_cos]).reshape(-1, 1)
+        coordinate_x1 = np.array([distance[126:252] * self.range1_sin]).reshape(-1, 1)
+        coordinate_y1 = np.array([distance[126:252] * self.range1_cos]).reshape(-1, 1)
 
+        
         # shape: (180, 1)   90도 = 126  (우 = 180 ~ 270)    # 252:378
-        coordinate_x2 = np.array([distance[865:1153] * self.range2_sin]).reshape(-1, 1)
-        coordinate_y2 = np.array([distance[865:1153] * self.range2_cos]).reshape(-1, 1)
+        coordinate_x2 = np.array([distance[252:378] * self.range2_sin]).reshape(-1, 1)
+        coordinate_y2 = np.array([distance[252:378] * self.range2_cos]).reshape(-1, 1)
 
+        
         # shape: (360, 1)
         coordinate_x = np.concatenate((coordinate_x1, coordinate_x2), axis=0)
         coordinate_y = np.concatenate((coordinate_y1, coordinate_y2), axis=0)
@@ -70,6 +73,7 @@ class Clustering:
        
         # x좌표가 0.30m 이하인 점의 인덱스를 찾아 그 부분만 살림
         condition = np.where(np.abs(data[:, 1]) < 0.30)
+        
         data = data[condition, :].reshape(-1, 2)
         return data
 
@@ -87,20 +91,18 @@ class Clustering:
             label_index = np.where(self.model.labels_ == label)
             cluster = data[label_index]
             centroid = np.mean(cluster, axis=0)
-            if centroid :
-                self.detected = 1
             centroid_list.append(centroid)
-       
-        print(np.unique(self.model.labels_))
-        return centroid_list
-
-    def avoidance(self, centroid_list):
-
+            
+            
         # 중심점 list에서 euclidean distance를 구함
         distance_list = [np.linalg.norm(centroid) for centroid in centroid_list]
        
         # 가장 거리가 가까운 점이 회피 대상이라 가정, x, y좌표가 반대로 출력되므로 역 인덱싱 적용
         centroid_list = centroid_list[np.argmin(distance_list)][::-1]
+        # print(np.unique(self.model.labels_))
+        return centroid_list
+
+    def avoidance(self, centroid_list):
 
         angle = (math.atan(centroid_list[1] / centroid_list[0]) * (180 / math.pi))     
 
@@ -113,17 +115,22 @@ class Clustering:
             if angle >= 20.0: # 각도 범위 제한
                 angle = 20.0
        
-        else:
-            pass
+        # else:
+        #     pass
+        #self.flag = 1
 
         return angle
 
     def process(self, msg, img):
+        
         coordinate = self.coordinate_transform(msg.ranges)
+        
         processed_data = self.value_handling(coordinate)
+        
         centroid_list = self.clustering(processed_data)
 
         self.rp.main(msg, img)
         self.steering_angle = self.avoidance(centroid_list)
-
-        return self.steering_angle, self.detected
+        
+            
+        return self.steering_angle #, self.flag
