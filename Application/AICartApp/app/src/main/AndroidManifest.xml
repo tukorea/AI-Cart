@@ -10,11 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AICartApp"
+        android:theme="@style/Theme.AICartApp.NoActionBar"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AICartApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,11 +29,12 @@
                 android:value="" />
         </activity>
 
+        <!-->
         <activity
-            android:name=".clothes"
+            android:name=".ui.clothes.ClothesView"
             android:label="clothes activity">
         </activity>
-
+        <-->
 
     </application>
 

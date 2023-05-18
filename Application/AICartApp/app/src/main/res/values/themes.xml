@@ -21,4 +21,6 @@
 
     <style name="Theme.AICartApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="Theme.AICartApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

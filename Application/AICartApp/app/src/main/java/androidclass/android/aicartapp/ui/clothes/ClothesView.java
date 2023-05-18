@@ -1,14 +1,15 @@
-package androidclass.android.aicartapp;
+package androidclass.android.aicartapp.ui.clothes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class clothes extends AppCompatActivity {
+import androidclass.android.aicartapp.R;
+
+public class ClothesView extends AppCompatActivity {
 
     ImageView[] Tshirt = new ImageView[6];
     ImageView[] Bpants = new ImageView[6];
