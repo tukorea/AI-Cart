@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AI Cart App</string>
+    <string name="user_info">사용자 정보</string>
+    <string name="mode_setting">모드 변경</string>
+    <string name="joy_stick">조이 스틱</string>
+    <string name="clothes">옷 색깔 지정</string>
+    <string name="camera_view">카메라 영상</string>
 </resources>
