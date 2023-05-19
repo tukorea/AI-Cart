@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidclass.android.aicartapp.R;
 
-public class ClothesView extends AppCompatActivity {
+public class ClothesViewModel extends AppCompatActivity {
 
     ImageView[] Tshirt = new ImageView[6];
     ImageView[] Bpants = new ImageView[6];
@@ -19,7 +19,7 @@ public class ClothesView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.clothes);
+        setContentView(R.layout.fragment_clothes);
 
         Tshirt[0] = (ImageView) findViewById(R.id.Tblue);
         Tshirt[1] = (ImageView) findViewById(R.id.Tgreen);
