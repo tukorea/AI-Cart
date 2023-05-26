@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ChangeModeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/mode_robot"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:src="@drawable/robot"
+                android:scaleType="centerInside"/>
+
+            <ImageButton
+                android:id="@+id/mode_joystick"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:src="@drawable/joystick"
+                android:layout_margin="10dp"
+                android:scaleType="centerInside"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="수동모드"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:backgroundTint="#cccccc"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="자동모드"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:backgroundTint="#cccccc"
+                android:layout_margin="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
