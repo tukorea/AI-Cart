@@ -25,8 +25,11 @@ public class ClothesFragment extends Fragment {
         binding = FragmentClothesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        /*
         final TextView textView = binding.textClothes;
         ClothesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+         */
         return root;
     }
 

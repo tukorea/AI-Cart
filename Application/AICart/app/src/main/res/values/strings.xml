@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">AICart</string>
-
-    <string name="user_info">User Info</string>
-    <string name="mode_setting">Mode Change</string>
-    <string name="joy_stick">Joystick</string>
-    <string name="clothes">Clothes</string>
-    <string name="camera_view">Camera View</string>
-</resources>
