@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AI Cart"
-include ':app', ':joystickView'
-project(':joystickView').projectDir=new File('/home/yun/AI-Cart/Application/module/joystickView')
+include ':app'
+include ':joystickView'
