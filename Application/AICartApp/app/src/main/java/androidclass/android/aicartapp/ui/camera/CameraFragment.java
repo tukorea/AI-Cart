@@ -1,4 +1,4 @@
-package androidclass.android.aicartapp.ui;
+package androidclass.android.aicartapp.ui.camera;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import androidclass.android.aicartapp.R;
 
-public class ChangeModeFragment extends Fragment {
+public class CameraFragment extends Fragment {
 
-    private ChangeModeViewModel mViewModel;
+    private CameraViewModel mViewModel;
 
-    public static ChangeModeFragment newInstance() {
-        return new ChangeModeFragment();
+    public static CameraFragment newInstance() {
+        return new CameraFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_change_mode, container, false);
+        return inflater.inflate(R.layout.fragment_camera, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ChangeModeViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CameraViewModel.class);
         // TODO: Use the ViewModel
     }
 
