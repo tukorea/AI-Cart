@@ -1,4 +1,4 @@
-package androidclass.android.aicartapp.ui;
+package androidclass.android.aicartapp.ui.changeMode;
 
 import androidx.lifecycle.ViewModel;
 
