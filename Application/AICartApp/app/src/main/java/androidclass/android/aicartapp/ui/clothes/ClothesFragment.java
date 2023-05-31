@@ -16,13 +16,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidclass.android.aicartapp.R;
 import androidclass.android.aicartapp.databinding.FragmentClothesBinding;
 
-public class ClothesFragment extends Fragment{
+public class ClothesFragment extends Fragment implements View.OnClickListener{
 
     private ImageView[] Tshirt = new ImageView[6];
     private ImageView[] Bpants = new ImageView[6];
     private TextView T, B;
     private FragmentClothesBinding binding;
     private ClothesViewModel clothesViewModel;
+
+    private Button btblue, btgreen, btbeige, btwithe, btblack, btgray;
+    private Button bbwhite, bblb, bbmb, bbdb, bbgray, bbblack;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,18 +48,36 @@ public class ClothesFragment extends Fragment{
         Bpants[4] = (ImageView) root.findViewById(R.id.Bgray);
         Bpants[5] = (ImageView) root.findViewById(R.id.Bblack);
 
-        for (int i = 0; i < Tshirt.length; i++) {
-            Tshirt[i].setVisibility(View.GONE);
-        }
-        Tshirt[3].setVisibility(View.VISIBLE);
-
-        for (int i = 1; i < Tshirt.length; i++) {
-            Bpants[i].setVisibility(View.GONE);
-        }
-        Bpants[0].setVisibility(View.VISIBLE);
-
         T = (TextView) root.findViewById(R.id.T);
         B = (TextView) root.findViewById(R.id.B);
+
+        btblue = (Button) root.findViewById(R.id.BTblue);
+        btgreen = (Button) root.findViewById(R.id.BTgreen);
+        btbeige = (Button) root.findViewById(R.id.BTbeige);
+        btwithe = (Button) root.findViewById(R.id.BTwhite);
+        btblack = (Button) root.findViewById(R.id.BTblack);
+        btgray = (Button) root.findViewById(R.id.BTgray);
+
+        bbwhite = (Button) root.findViewById(R.id.BBwhite);
+        bblb = (Button) root.findViewById(R.id.BBlb);
+        bbmb = (Button) root.findViewById(R.id.BBmb);
+        bbdb = (Button) root.findViewById(R.id.BBdb);
+        bbgray = (Button) root.findViewById(R.id.BBgray);
+        bbblack = (Button) root.findViewById(R.id.BBblack);
+
+        btblue.setOnClickListener(this);
+        btgreen.setOnClickListener(this);
+        btbeige.setOnClickListener(this);
+        btwithe.setOnClickListener(this);
+        btblack.setOnClickListener(this);
+        btgray.setOnClickListener(this);
+
+        bbwhite.setOnClickListener(this);
+        bblb.setOnClickListener(this);
+        bbmb.setOnClickListener(this);
+        bbdb.setOnClickListener(this);
+        bbgray.setOnClickListener(this);
+        bbblack.setOnClickListener(this);
 
         return root;
     }
@@ -95,65 +116,76 @@ public class ClothesFragment extends Fragment{
             }
         });
     }
-    public void TClick(View v) {
-        int index = 0;
-        switch(v.getId()) {
+
+    @Override
+    public void onClick(@NonNull View view) {
+        int index1 = 0;
+        int index2 = 0;
+        int torb = 0;
+        switch(view.getId()) {
             case R.id.BTblue:
-                index = 0;
+                index1 = 0;
                 T.setText("T : Blue");
+                torb = 1;
                 break;
             case R.id.BTgreen:
-                index = 1;
+                index1 = 1;
                 T.setText("T : Green");
+                torb = 1;
                 break;
             case R.id.BTbeige:
                 T.setText("T : Beige");
-                index = 2;
+                index1 = 2;
+                torb = 1;
                 break;
             case R.id.BTwhite:
                 T.setText("T : White");
-                index = 3;
+                index1 = 3;
+                torb = 1;
                 break;
             case R.id.BTblack:
                 T.setText("T : Black");
-                index = 4;
+                index1 = 4;
+                torb = 1;
                 break;
             case R.id.BTgray:
                 T.setText("T : Gray");
-                index = 5;
+                index1 = 5;
+                torb = 1;
                 break;
         }
-        clothesViewModel.setTshirtIndex(index);
-    }
+        if(torb == 1){
+            clothesViewModel.setTshirtIndex(index1);
+            return;
+        }
 
-    public void BClick(View v) {
-        int index = 0;
-        switch(v.getId()) {
+        switch(view.getId()) {
             case R.id.BBwhite:
                 B.setText("B : White");
-                index = 0;
+                index2 = 0;
                 break;
             case R.id.BBlb:
                 B.setText("B : Sky Blue");
-                index = 1;
+                index2 = 1;
                 break;
             case R.id.BBmb:
                 B.setText("B : Medium Blue");
-                index = 2;
+                index2 = 2;
                 break;
             case R.id.BBdb:
                 B.setText("B : Dark Blue");
-                index = 3;
+                index2 = 3;
                 break;
             case R.id.BBgray:
                 B.setText("B : Gray");
-                index = 4;
+                index2 = 4;
                 break;
             case R.id.BBblack:
                 B.setText("B : Black");
-                index = 5;
+                index2 = 5;
                 break;
         }
-        clothesViewModel.setBpantsIndex(index);
+        clothesViewModel.setBpantsIndex(index2);
     }
+
 }

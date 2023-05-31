@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab_mode"
+        android:enabled="true"
+        android:icon="@drawable/icon_change_management"
+        android:title="모드 선택"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/tab_joystick"
+        android:enabled="true"
+        android:icon="@drawable/icon_joystick"
+        android:title="조이스틱"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/tab_clothes"
+        android:enabled="true"
+        android:icon="@drawable/icon_clothes"
+        android:title="옷 색상 선택"
+        app:showAsAction="ifRoom"/>
+
+
+
+</menu>

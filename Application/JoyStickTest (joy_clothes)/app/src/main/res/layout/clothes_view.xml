@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.clothes.ClothesFragment">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -79,6 +77,7 @@
                     android:backgroundTint="@color/white"
                     android:id="@+id/BTwhite"
                     android:text="white"
+                    android:onClick="TClick"
                     android:layout_margin="5dp"/>
 
                 <android.widget.Button
@@ -86,6 +85,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/blue"
                     android:id="@+id/BTblue"
+                    android:onClick="TClick"
                     android:text="blue"
                     android:layout_margin="5dp"/>
 
@@ -94,6 +94,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/gray"
                     android:id="@+id/BTgray"
+                    android:onClick="TClick"
                     android:text="gray"
                     android:layout_margin="5dp"/>
 
@@ -107,6 +108,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/beige"
                     android:id="@+id/BTbeige"
+                    android:onClick="TClick"
                     android:text="beige"
                     android:layout_margin="5dp"/>
 
@@ -115,6 +117,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/green"
                     android:id="@+id/BTgreen"
+                    android:onClick="TClick"
                     android:text="green"
                     android:layout_margin="5dp"/>
 
@@ -123,6 +126,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/black"
                     android:id="@+id/BTblack"
+                    android:onClick="TClick"
                     android:text="black"
                     android:textColor="@color/white"
                     android:layout_margin="5dp"/>
@@ -205,6 +209,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/white"
                     android:id="@+id/BBwhite"
+                    android:onClick="BClick"
                     android:text="white"
                     android:layout_margin="5dp"/>
 
@@ -213,6 +218,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/mediumblue"
                     android:id="@+id/BBmb"
+                    android:onClick="BClick"
                     android:text="blue"
                     android:layout_margin="5dp"/>
 
@@ -221,6 +227,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/gray"
                     android:id="@+id/BBgray"
+                    android:onClick="BClick"
                     android:text="gray"
                     android:layout_margin="5dp"/>
 
@@ -234,6 +241,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/lightblue"
                     android:id="@+id/BBlb"
+                    android:onClick="BClick"
                     android:text="sky blue"
                     android:layout_margin="5dp"/>
 
@@ -242,6 +250,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/darkblue"
                     android:id="@+id/BBdb"
+                    android:onClick="BClick"
                     android:text="dark blue"
                     android:textColor="@color/white"
                     android:layout_margin="5dp"/>
@@ -251,6 +260,7 @@
                     android:layout_height="70dp"
                     android:backgroundTint="@color/black"
                     android:id="@+id/BBblack"
+                    android:onClick="BClick"
                     android:text="black"
                     android:textColor="@color/white"
                     android:layout_margin="5dp"/>
