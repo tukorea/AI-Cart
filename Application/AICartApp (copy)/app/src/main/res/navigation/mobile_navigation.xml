@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_change_mode">
+
+    <fragment
+        android:id="@+id/nav_clothes"
+        android:name="androidclass.android.aicartapp.ui.clothes.ClothesFragment"
+        android:label="@string/clothes"
+        tools:layout="@layout/fragment_clothes" />
+
+    <fragment
+        android:id="@+id/nav_change_mode"
+        android:name="androidclass.android.aicartapp.ui.changeMode.ChangeModeFragment"
+        android:label="@string/mode_setting"
+        tools:layout="@layout/fragment_change_mode" />
+
+    <fragment
+        android:id="@+id/nav_camera_view"
+        android:name="androidclass.android.aicartapp.ui.camera.CameraFragment"
+        android:label="@string/camera_view"
+        tools:layout="@layout/fragment_camera" />
+
+    <fragment
+        android:id="@+id/nav_joystick"
+        android:name="androidclass.android.aicartapp.ui.joystick.JoyStickFragment"
+        android:label="@string/joy_stick"
+        tools:layout="@layout/fragment_joy_stick"/>
+<!--
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="androidclass.android.test.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="androidclass.android.test.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+-->
+</navigation>
