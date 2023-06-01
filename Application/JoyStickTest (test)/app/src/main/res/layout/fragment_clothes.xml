@@ -1,14 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClothesFragment">
+    tools:context=".ui.clothes.ClothesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-</FrameLayout>
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Twhite"
+                    android:src="@drawable/twhite_backgroundx"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Tbeige"
+                    android:src="@drawable/tbeige_backgroundx"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Tblue"
+                    android:src="@drawable/tblue_backgroundx"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Tgreen"
+                    android:src="@drawable/tgreen_backgroundo"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Tgray"
+                    android:src="@drawable/tgray_backgroundx"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:id="@+id/Tblack"
+                    android:src="@drawable/tblack_backgroundx"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/BTwhite"
+                    android:text="white"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/blue"
+                    android:id="@+id/BTblue"
+                    android:text="blue"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/gray"
+                    android:id="@+id/BTgray"
+                    android:text="gray"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/beige"
+                    android:id="@+id/BTbeige"
+                    android:text="beige"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/green"
+                    android:id="@+id/BTgreen"
+                    android:text="green"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/black"
+                    android:id="@+id/BTblack"
+                    android:text="black"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/T"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/bwhite_backgroundx"
+                    android:id="@+id/Bwhite"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/blightblue_backgroundx"
+                    android:id="@+id/Blb"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/blightblue_backgroundx"
+                    android:id="@+id/Bmb"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/bgray_backgroundx"
+                    android:id="@+id/Bgray"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/bblack1_backgroundx"
+                    android:id="@+id/Bblack"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="220dp"
+                    android:src="@drawable/bdarkblue_backgroundx"
+                    android:id="@+id/Bdb"
+                    android:layout_margin="20dp"
+                    tools:ignore="MissingConstraints" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/BBwhite"
+                    android:text="white"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/mediumblue"
+                    android:id="@+id/BBmb"
+                    android:text="blue"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/gray"
+                    android:id="@+id/BBgray"
+                    android:text="gray"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/lightblue"
+                    android:id="@+id/BBlb"
+                    android:text="sky blue"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/darkblue"
+                    android:id="@+id/BBdb"
+                    android:text="dark blue"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"/>
+
+                <android.widget.Button
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:backgroundTint="@color/black"
+                    android:id="@+id/BBblack"
+                    android:text="black"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/B"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

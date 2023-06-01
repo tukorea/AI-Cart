@@ -20,7 +20,7 @@
         tools:replace="android:appComponentFactory"
         android:appComponentFactory="whateverString">
         <activity
-            android:name=".JoyStick"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,11 +33,11 @@
                 android:value="" />
         </activity>
 
+        <!--
         <activity
             android:name=".Clothes" android:label="Clothes Activity">
         </activity>
-
-
+-->
 
         <service android:name="org.eclipse.paho.android.service.MqttService" >
         </service>

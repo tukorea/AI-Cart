@@ -17,6 +17,12 @@
         android:label="@string/mode_setting"
         tools:layout="@layout/fragment_change_mode" />
 
+    <fragment
+        android:id="@+id/nav_camera_view"
+        android:name="androidclass.android.aicartapp.ui.camera.CameraFragment"
+        android:label="@string/camera_view"
+        tools:layout="@layout/fragment_camera" />
+
 <!--
     <fragment
         android:id="@+id/nav_gallery"
