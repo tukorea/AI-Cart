@@ -16,7 +16,7 @@
         android:appComponentFactory="whateverString">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AICartApp.NoActionBar">
@@ -31,12 +31,9 @@
                 android:value="" />
         </activity>
 
-        <!-->
-        <activity
-            android:name=".ui.clothes.ClothesView"
-            android:label="clothes activity">
+        <activity android:name=".MainActivity"
+            android:label="main">
         </activity>
-        <-->
 
     </application>
 
