@@ -6,6 +6,7 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@drawable/ic_background_header"
     android:paddingLeft="15dp"
     android:paddingTop="15dp"
     android:paddingRight="15dp"
@@ -34,12 +35,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dkdndk"/>
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:text="크기 맞춤형 자율주행 캐리어"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dkdnke" />
+        android:textColor="@color/black"
+        android:text="싱기빵이" />
 
 </LinearLayout>
