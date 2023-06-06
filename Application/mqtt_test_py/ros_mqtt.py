@@ -38,7 +38,6 @@ class GetColor:
 
         rospy.loginfo("Received: %s", data.data)
 
-
     def on_connect(self, client, userdata, flags, rc):
         rospy.loginfo("Connected with RC: " + str(rc))
         client.subscribe("mqtt_topic")
