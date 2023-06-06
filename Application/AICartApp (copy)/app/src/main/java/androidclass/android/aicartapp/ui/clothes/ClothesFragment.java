@@ -2,6 +2,7 @@ package androidclass.android.aicartapp.ui.clothes;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.gson.JsonObject;
+
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import androidclass.android.aicartapp.R;
 import androidclass.android.aicartapp.databinding.FragmentClothesBinding;
@@ -26,6 +33,20 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
 
     private Button btblue, btgreen, btbeige, btwithe, btblack, btgray;
     private Button bbwhite, bblb, bbmb, bbdb, bbgray, bbblack;
+
+    private Button setclothes;
+
+    private int top;
+    private int bottom;
+
+    private String pub_color = "colorset";
+
+    // MQTT
+    private static final String MQTTHOST = "tcp://3.36.243.219:1883";
+    private static final String USERNAME = "App";
+    private static final String PASSWORD = "App_PW";
+
+    private MqttClient mqttClient;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +100,43 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         bbgray.setOnClickListener(this);
         bbblack.setOnClickListener(this);
 
+        setclothes = (Button) root.findViewById(R.id.colorsetting);
+
+        try {
+            mqttClient = new MqttClient(MQTTHOST, MqttClient.generateClientId(), null);
+            mqttClient.connect();
+
+            setclothes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clothesViewModel.getTshirtIndex().observe(getViewLifecycleOwner(), index -> {
+                        top = index;
+                    });
+
+                    clothesViewModel.getBpantsIndex().observe(getViewLifecycleOwner(), index -> {
+                        bottom = index;
+                    });
+
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.addProperty("Top", top);
+                    jsonObject.addProperty("Bottom", bottom);
+
+                    String jsonString = jsonObject.toString();
+
+                    try {
+                        mqttClient.publish(pub_color, new MqttMessage(jsonString.getBytes()));
+
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+
+                    }
+                }
+            });
+        } catch (MqttException e) {
+            e.printStackTrace();
+
+        }
+
         return root;
     }
 
@@ -86,6 +144,14 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if (mqttClient != null && mqttClient.isConnected()) {
+            try {
+                mqttClient.disconnect();
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+        }
+        mqttClient = null;
         binding = null;
     }
 

@@ -11,12 +11,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3">
 
                 <ImageView
                     android:layout_width="200dp"
@@ -69,8 +70,9 @@
 
             </FrameLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -98,24 +100,25 @@
 
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <android.widget.Button
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:backgroundTint="@color/beige"
+                    android:layout_margin="5dp"
                     android:id="@+id/BTbeige"
-                    android:text="beige"
-                    android:layout_margin="5dp"/>
+                    android:text="beige"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:backgroundTint="@color/green"
+                    android:layout_margin="5dp"
                     android:id="@+id/BTgreen"
-                    android:text="green"
-                    android:layout_margin="5dp"/>
+                    android:text="green"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -143,8 +146,9 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3">
 
                 <ImageView
                     android:layout_width="200dp"
@@ -196,8 +200,9 @@
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -205,7 +210,8 @@
                     android:backgroundTint="@color/white"
                     android:id="@+id/BBwhite"
                     android:text="white"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -213,7 +219,8 @@
                     android:backgroundTint="@color/mediumblue"
                     android:id="@+id/BBmb"
                     android:text="blue"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -221,12 +228,14 @@
                     android:backgroundTint="@color/gray"
                     android:id="@+id/BBgray"
                     android:text="gray"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -234,7 +243,8 @@
                     android:backgroundTint="@color/lightblue"
                     android:id="@+id/BBlb"
                     android:text="sky blue"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -243,7 +253,8 @@
                     android:id="@+id/BBdb"
                     android:text="dark blue"
                     android:textColor="@color/white"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <android.widget.Button
                     android:layout_width="70dp"
@@ -252,7 +263,8 @@
                     android:id="@+id/BBblack"
                     android:text="black"
                     android:textColor="@color/white"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
             </LinearLayout>
 
         </LinearLayout>

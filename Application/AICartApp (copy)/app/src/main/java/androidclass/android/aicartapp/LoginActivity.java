@@ -24,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
 
         // 초기에는 로그인 레이아웃을 표시
-        binding.layoutLogin.getRoot().setVisibility(View.VISIBLE);
-        binding.layoutRegister.getRoot().setVisibility(View.GONE);
+        binding.layoutLogin.getRoot().setVisibility(View.GONE);
+        binding.layoutRegister.getRoot().setVisibility(View.VISIBLE);
 
     }
 }
