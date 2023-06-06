@@ -28,17 +28,12 @@
         android:name="androidclass.android.aicartapp.ui.joystick.JoyStickFragment"
         android:label="@string/joy_stick"
         tools:layout="@layout/fragment_joy_stick"/>
-<!--
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="androidclass.android.test.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="androidclass.android.test.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
--->
+        android:id="@+id/nav_user_info"
+        android:name="androidclass.android.aicartapp.ui.userinfo.UserInfoFragment"
+        android:label="@string/user_info"
+        tools:layout="@layout/fragment_user_info" />
+
+
 </navigation>

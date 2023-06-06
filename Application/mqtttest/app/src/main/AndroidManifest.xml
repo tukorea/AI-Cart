@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- 네트워크 권한 추가-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,34 +12,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AICartApp.NoActionBar"
-        tools:targetApi="31"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString">
-
+        android:theme="@style/Theme.MqttTest"
+        tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AICartApp.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
-
-        <activity android:name=".LoginActivity"
-            android:label="main">
-        </activity>
-
-        <service android:name="org.eclipse.paho.android.service.MqttService" >
-        </service>
-
     </application>
 
 </manifest>
