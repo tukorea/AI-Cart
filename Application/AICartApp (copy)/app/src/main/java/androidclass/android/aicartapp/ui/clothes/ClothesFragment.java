@@ -86,6 +86,17 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         bbgray = (Button) root.findViewById(R.id.BBgray);
         bbblack = (Button) root.findViewById(R.id.BBblack);
 
+        btgray.setEnabled(false);
+        btbeige.setEnabled(false);
+        btgreen.setEnabled(false);
+        btblue.setEnabled(false);
+
+        bbblack.setEnabled(false);
+        bbdb.setEnabled(false);
+        bbgray.setEnabled(false);
+        bbmb.setEnabled(false);
+        bbwhite.setEnabled(false);
+
         btblue.setOnClickListener(this);
         btgreen.setOnClickListener(this);
         btbeige.setOnClickListener(this);

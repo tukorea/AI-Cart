@@ -47,6 +47,8 @@ public class ChangeModeFragment extends Fragment implements View.OnClickListener
         mode_robot.setOnClickListener(this);
         mode_joystick.setOnClickListener(this);
 
+
+
         return root;
     }
 
