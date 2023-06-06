@@ -50,7 +50,8 @@
                 android:layout_weight="1"
                 android:contentDescription="자동 모드"
                 android:scaleType="centerInside"
-                android:src="@drawable/robot" />
+                android:src="@drawable/robot"
+                android:background="@drawable/ic_background_mode"/>
 
             <ImageButton
                 android:id="@+id/mode_joystick"
@@ -60,7 +61,8 @@
                 android:layout_weight="1"
                 android:contentDescription="수동 모드"
                 android:scaleType="centerInside"
-                android:src="@drawable/joystick" />
+                android:src="@drawable/joystick"
+                android:background="@drawable/ic_background_mode"/>
 
         </LinearLayout>
     </LinearLayout>
