@@ -72,7 +72,10 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#f0f0f0"
+                    android:layout_marginTop="15dp"
+                    >
                     <include
                         layout="@layout/layout_login"
                         android:id="@+id/layout_login"/>
