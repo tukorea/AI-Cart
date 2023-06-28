@@ -14,7 +14,7 @@ from std_msgs.msg import String
 
 
 ## video Transmissin 
-
+# 앱 화면 출력
 #pub = rospy.Publisher('image_topic', Image, queue_size=10)
 bridge = CvBridge()
 
@@ -30,6 +30,8 @@ class YoloDetector:
 
         self.trackers = cv2.legacy_TrackerKCF.create()
         self.roi = []
+
+        #go 범위 선택
         self.tolerance = 30 # 중간점과 간격 차이 얼마나 줄 것인지
         
     def detect(self, img):
@@ -90,6 +92,7 @@ class Camera:
             self.steering_angle = 0            
             self.sensor = HPSensor()
             self.trackers = cv2.legacy_TrackerKCF.create()
+            # go 간격선택
             self.tolerance = 100 # 중간점과 간격 차이 얼마나 줄 것인지
             self.roi = (200, 120, 240, 240)
             self.object = None
@@ -104,14 +107,16 @@ class Camera:
 
     def callback_color(self, msg):
         top= msg.data.split(', ')
-        do = 1
+        do_callback = 1
+
+        # 앱에서 받아오는 데이터
         if top[0] == "Bottomlb":
             self.label = "TopWhite"
         elif top[0] == "TopWhite":
             self.label = "TopBlack"
-        
-        while do:
-            do = self.selection(self.sensor.cam, top[0])
+        # YOLO 인식 될 때까지 루프
+        while do_callback:
+            do_callback = self.selection(self.sensor.cam, top[0])
         
             
     def selection(self, frame, top): # roi 선택하기
@@ -134,24 +139,29 @@ class Camera:
         cv2.imshow("Image4", frame)
         outs, height, width = self.yolo.detect(frame)
         boxes, class_ids, confidences, x_center, y_center = self.yolo.process_detections(outs, height, width)
-        print("done process")
+        #print("done process")
         do = 1
         for i in range(len(boxes)):
+            #상의가 인식되지 않았을 때
+            #self.top이 아니면 아래 if 문은 무조건 else 로 가는건가?
+            #그렇게 되면 do 는 무조건 0 -> 무한 루프 끊어지게 됨
             if str(self.yolo.classes[class_ids[i]]) != top:
                 # cv2.imshow("Image2", frame)
-                print('check class')
+                #print('check class')
                 continue
             else:
-                print('inter else, check roi')
-                do = 0
+                #print('inter else, check roi')
                 
                 self.yolo.update_roi(boxes)
                 self.flag = 1
-                print('done roi setting')
+                #print('done roi setting')
                 indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
                 
                 font = cv2.FONT_HERSHEY_PLAIN
+                
+                # 인식 된 경우
                 if i in indexes:
+                    do = 0
                     x, y, w, h = boxes[i]
                     label = str(self.yolo.classes[class_ids[i]])
                     color = self.colors[class_ids[i]]
@@ -164,9 +174,14 @@ class Camera:
                     cv2.circle(frame, (center_x, center_y), 5, (0, 0, 255), -1)
                     
                     cv2.imshow("Image", frame)
+                #인식 안된 경우?
+                else:
+                    do = 1
+                #밑에 if 문 지워도 되나?
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
                 self.roi_select = frame
+                
                 break
                 
         return do
@@ -178,11 +193,20 @@ class Camera:
         elif direction =='right':
             self.steering_angle = 20
             self.speed = 5
+
+        # up -> 가까워 지는 것 down -> 멀어 지는 것
+        # up -> speed up / down -> speed down
         elif direction =='up':
-            self.speed = 0
+            ## 이세희 수정
+            #self.speed = 0
+            self.speed = -5
+            ##
             self.steering_angle = 0
         elif direction =='down':
-            self.speed = -5
+            ## 이세희 수정
+            #self.speed = -5
+            self.speed = 8
+            ##
             self.steering_angle = 0
         elif direction == 'go' :
             self.speed = 5
@@ -210,9 +234,11 @@ class Camera:
             #         self.flag = 1
                     
             if self.trackers is None: #트랙커 생성 안된 경우
-                print(6)
+                #print(6)
                 # cv2.putText(data, "Press the Space to set ROI!!", (100,80), cv2.FONT_HERSHEY_SIMPLEX, 0.75,(0,0,255),2,cv2.LINE_AA)
-            
+                ## 이세희 추가
+                continue
+                ##
             else:
                 success, self.roi = self.trackers.update(data) # 객체 추적      
                 print(7)        
@@ -234,6 +260,7 @@ class Camera:
                         self.start_time = time.time()
                         self.flag_time = 1
                     else:
+                        #Lost 신호가 와도 15초 동안 대기
                         if(time.time() - self.start_time) > 15:
                             self.flag = 0
                             self.flag_time = 0
@@ -290,6 +317,7 @@ class Camera:
                 cv2.imshow("Object Tracking", data)
                 
                 # OpenCV 영상을 ROS 메시지로 변환하여 게시
+                # app
                 # self.pub.publish(bridge.cv2_to_imgmsg(data, "bgr8"))
                 
                 # 'q' 키를 누르면 종료            
