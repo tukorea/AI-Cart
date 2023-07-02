@@ -109,7 +109,7 @@
                                 style="@style/modifiedEditText"
                                 android:inputType="textEmailAddress"
                                 android:maxLines="1"
-                                android:hint="Email"/>
+                                android:hint="ID"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout

@@ -111,10 +111,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                             InsertData task = new InsertData(); //PHP 통신을 위한 InsertData 클래스의 task 객체 생성
                             //본인이 접속할 PHP 주소와 보낼 데이터를 입력해준다.
-                            task.execute("http://"+IP_ADDRESS+"/insert_log_php.php",email,email,pwd,name,spinner1,question);
+                            task.execute("http://"+IP_ADDRESS+"/insert_log_php.php",email,id,pwd,name,spinner1,question);
                             Toast.makeText(RegisterActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(intent);
                             finish();
-
                         }
 
 
@@ -169,6 +170,14 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             String username = (String)params[4];
             String userquestion = (String)params[5];
             String useranswer = (String)params[6];
+
+            Log.d("serverURL",serverURL);
+            Log.d("email",useremail);
+            Log.d("id",userid);
+            Log.d("pw",userpw);
+            Log.d("name",username);
+            Log.d("question",userquestion);
+            Log.d("answer",useranswer);
 
 
             /*
@@ -235,8 +244,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
                 //저장된 데이터를 스트링으로 변환하여 리턴값으로 받는다.
                 return  sb.toString();
-
-
             }
 
             catch (Exception e) {
