@@ -1,6 +1,8 @@
 package androidclass.android.aicartapp.ui.clothes;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import androidclass.android.aicartapp.MainActivity;
 import androidclass.android.aicartapp.R;
 import androidclass.android.aicartapp.databinding.FragmentClothesBinding;
 
@@ -86,16 +89,19 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         bbgray = (Button) root.findViewById(R.id.BBgray);
         bbblack = (Button) root.findViewById(R.id.BBblack);
 
+
         btgray.setEnabled(false);
         btbeige.setEnabled(false);
         btgreen.setEnabled(false);
         btblue.setEnabled(false);
 
+        /*
         bbblack.setEnabled(false);
         bbdb.setEnabled(false);
         bbgray.setEnabled(false);
         bbmb.setEnabled(false);
         bbwhite.setEnabled(false);
+        */
 
         btblue.setOnClickListener(this);
         btgreen.setOnClickListener(this);
@@ -134,20 +140,36 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
 
                     String jsonString = jsonObject.toString();
 
-                    try {
-                        mqttClient.publish(pub_color, new MqttMessage(jsonString.getBytes()));
+                    AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+                    ad.setTitle("Clothes");
+                    ad.setMessage("Clothes setting을 진행합니까?");
 
-                    } catch (MqttException e) {
-                        e.printStackTrace();
+                    ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                mqttClient.publish(pub_color, new MqttMessage(jsonString.getBytes()));
 
-                    }
+                            } catch (MqttException e) {
+                                e.printStackTrace();
+
+                            }
+                        }
+                    });
+
+                    ad.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    ad.show();
                 }
             });
         } catch (MqttException e) {
             e.printStackTrace();
 
         }
-
         return root;
     }
 
@@ -264,5 +286,4 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         }
         clothesViewModel.setBpantsIndex(index2);
     }
-
 }

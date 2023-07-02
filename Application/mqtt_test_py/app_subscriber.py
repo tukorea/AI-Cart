@@ -1,10 +1,12 @@
 import paho.mqtt.client as mqtt
 topic = "colorset"
+topic2 = "joystick"
 server = "3.36.243.219"
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with RC : " + str(rc))
     client.subscribe(topic)
+    client.subscribe(topic2)
 
 def on_message(client, userdata, msg):
     print("Topic: ", msg.topic + '\nMessage: ' + str(msg.payload))
