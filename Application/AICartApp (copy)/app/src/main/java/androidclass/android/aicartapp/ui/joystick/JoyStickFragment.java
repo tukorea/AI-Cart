@@ -36,6 +36,8 @@ public class JoyStickFragment extends Fragment {
     String Angle = "";
     String Power = "";
 
+    String Direction = "";
+
     //MqttAndroidClient client;
 
     private FragmentJoyStickBinding binding;
@@ -109,9 +111,12 @@ public class JoyStickFragment extends Fragment {
                             directionTextView.setText(R.string.center_lab);
                     }
 
+                    Direction = String.valueOf(directionTextView.getText());
+
                     JsonObject jsonObject = new JsonObject();
-                    jsonObject.addProperty("angle", Angle);
-                    jsonObject.addProperty("power", Power);
+                    //jsonObject.addProperty("angle", Angle);
+                    //jsonObject.addProperty("power", Power);
+                    jsonObject.addProperty("direction", Direction);
 
                     String jsonString = jsonObject.toString();
 
