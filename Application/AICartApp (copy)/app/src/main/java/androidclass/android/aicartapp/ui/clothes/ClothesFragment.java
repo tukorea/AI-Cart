@@ -29,18 +29,15 @@ import androidclass.android.aicartapp.databinding.FragmentClothesBinding;
 public class ClothesFragment extends Fragment implements View.OnClickListener{
 
     private ImageView[] Tshirt = new ImageView[6];
-    private ImageView[] Bpants = new ImageView[6];
     private TextView T, B;
     private FragmentClothesBinding binding;
     private ClothesViewModel clothesViewModel;
 
     private Button btblue, btgreen, btbeige, btwithe, btblack, btgray;
-    private Button bbwhite, bblb, bbmb, bbdb, bbgray, bbblack;
 
     private Button setclothes;
 
     private int top;
-    private int bottom;
 
     private String pub_color = "colorset";
 
@@ -65,15 +62,7 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         Tshirt[4] = (ImageView) root.findViewById(R.id.Tblack);
         Tshirt[5] = (ImageView) root.findViewById(R.id.Tgray);
 
-        Bpants[0] = (ImageView) root.findViewById(R.id.Bwhite);
-        Bpants[1] = (ImageView) root.findViewById(R.id.Blb);
-        Bpants[2] = (ImageView) root.findViewById(R.id.Bmb);
-        Bpants[3] = (ImageView) root.findViewById(R.id.Bdb);
-        Bpants[4] = (ImageView) root.findViewById(R.id.Bgray);
-        Bpants[5] = (ImageView) root.findViewById(R.id.Bblack);
-
         T = (TextView) root.findViewById(R.id.T);
-        B = (TextView) root.findViewById(R.id.B);
 
         btblue = (Button) root.findViewById(R.id.BTblue);
         btgreen = (Button) root.findViewById(R.id.BTgreen);
@@ -82,26 +71,14 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         btblack = (Button) root.findViewById(R.id.BTblack);
         btgray = (Button) root.findViewById(R.id.BTgray);
 
-        bbwhite = (Button) root.findViewById(R.id.BBwhite);
-        bblb = (Button) root.findViewById(R.id.BBlb);
-        bbmb = (Button) root.findViewById(R.id.BBmb);
-        bbdb = (Button) root.findViewById(R.id.BBdb);
-        bbgray = (Button) root.findViewById(R.id.BBgray);
-        bbblack = (Button) root.findViewById(R.id.BBblack);
-
-
+/*
         btgray.setEnabled(false);
         btbeige.setEnabled(false);
         btgreen.setEnabled(false);
         btblue.setEnabled(false);
 
-        /*
-        bbblack.setEnabled(false);
-        bbdb.setEnabled(false);
-        bbgray.setEnabled(false);
-        bbmb.setEnabled(false);
-        bbwhite.setEnabled(false);
-        */
+ */
+
 
         btblue.setOnClickListener(this);
         btgreen.setOnClickListener(this);
@@ -109,13 +86,6 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         btwithe.setOnClickListener(this);
         btblack.setOnClickListener(this);
         btgray.setOnClickListener(this);
-
-        bbwhite.setOnClickListener(this);
-        bblb.setOnClickListener(this);
-        bbmb.setOnClickListener(this);
-        bbdb.setOnClickListener(this);
-        bbgray.setOnClickListener(this);
-        bbblack.setOnClickListener(this);
 
         setclothes = (Button) root.findViewById(R.id.colorsetting);
 
@@ -130,13 +100,8 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
                         top = index;
                     });
 
-                    clothesViewModel.getBpantsIndex().observe(getViewLifecycleOwner(), index -> {
-                        bottom = index;
-                    });
-
                     JsonObject jsonObject = new JsonObject();
                     jsonObject.addProperty("Top", top);
-                    jsonObject.addProperty("Bottom", bottom);
 
                     String jsonString = jsonObject.toString();
 
@@ -205,21 +170,11 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        clothesViewModel.getBpantsIndex().observe(getViewLifecycleOwner(), index -> {
-            for (int i = 0; i < Bpants.length; i++) {
-                if (i == index) {
-                    Bpants[i].setVisibility(View.VISIBLE);
-                } else {
-                    Bpants[i].setVisibility(View.GONE);
-                }
-            }
-        });
     }
 
     @Override
     public void onClick(@NonNull View view) {
         int index1 = 0;
-        int index2 = 0;
         int torb = 0;
         switch(view.getId()) {
             case R.id.BTblue:
@@ -257,33 +212,5 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
             clothesViewModel.setTshirtIndex(index1);
             return;
         }
-
-        switch(view.getId()) {
-            case R.id.BBwhite:
-                B.setText("B : White");
-                index2 = 0;
-                break;
-            case R.id.BBlb:
-                B.setText("B : Sky Blue");
-                index2 = 1;
-                break;
-            case R.id.BBmb:
-                B.setText("B : Medium Blue");
-                index2 = 2;
-                break;
-            case R.id.BBdb:
-                B.setText("B : Dark Blue");
-                index2 = 3;
-                break;
-            case R.id.BBgray:
-                B.setText("B : Gray");
-                index2 = 4;
-                break;
-            case R.id.BBblack:
-                B.setText("B : Black");
-                index2 = 5;
-                break;
-        }
-        clothesViewModel.setBpantsIndex(index2);
     }
 }
