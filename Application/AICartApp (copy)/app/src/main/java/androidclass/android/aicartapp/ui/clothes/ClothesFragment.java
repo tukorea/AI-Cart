@@ -28,12 +28,12 @@ import androidclass.android.aicartapp.databinding.FragmentClothesBinding;
 
 public class ClothesFragment extends Fragment implements View.OnClickListener{
 
-    private ImageView[] Tshirt = new ImageView[6];
+    private ImageView[] Tshirt = new ImageView[4];
     private TextView T, B;
     private FragmentClothesBinding binding;
     private ClothesViewModel clothesViewModel;
 
-    private Button btblue, btgreen, btbeige, btwithe, btblack, btgray;
+    private Button btblue, btpink, btwithe, btblack;
 
     private Button setclothes;
 
@@ -55,37 +55,23 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
         clothesViewModel = new ViewModelProvider(this).get(ClothesViewModel.class);
         View root = binding.getRoot();
 
-        Tshirt[0] = (ImageView) root.findViewById(R.id.Tblue);
-        Tshirt[1] = (ImageView) root.findViewById(R.id.Tgreen);
-        Tshirt[2] = (ImageView) root.findViewById(R.id.Tbeige);
-        Tshirt[3] = (ImageView) root.findViewById(R.id.Twhite);
-        Tshirt[4] = (ImageView) root.findViewById(R.id.Tblack);
-        Tshirt[5] = (ImageView) root.findViewById(R.id.Tgray);
+        Tshirt[0] = (ImageView) root.findViewById(R.id.Twhite);
+        Tshirt[1] = (ImageView) root.findViewById(R.id.Tpink);
+        Tshirt[2] = (ImageView) root.findViewById(R.id.Tblue);
+        Tshirt[3] = (ImageView) root.findViewById(R.id.Tblack);
 
         T = (TextView) root.findViewById(R.id.T);
 
         btblue = (Button) root.findViewById(R.id.BTblue);
-        btgreen = (Button) root.findViewById(R.id.BTgreen);
-        btbeige = (Button) root.findViewById(R.id.BTbeige);
+        btpink = (Button) root.findViewById(R.id.BTpink);
         btwithe = (Button) root.findViewById(R.id.BTwhite);
         btblack = (Button) root.findViewById(R.id.BTblack);
-        btgray = (Button) root.findViewById(R.id.BTgray);
-
-/*
-        btgray.setEnabled(false);
-        btbeige.setEnabled(false);
-        btgreen.setEnabled(false);
-        btblue.setEnabled(false);
-
- */
 
 
         btblue.setOnClickListener(this);
-        btgreen.setOnClickListener(this);
-        btbeige.setOnClickListener(this);
+        btpink.setOnClickListener(this);
         btwithe.setOnClickListener(this);
         btblack.setOnClickListener(this);
-        btgray.setOnClickListener(this);
 
         setclothes = (Button) root.findViewById(R.id.colorsetting);
 
@@ -174,43 +160,26 @@ public class ClothesFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(@NonNull View view) {
-        int index1 = 0;
-        int torb = 0;
+        int index = 0;
         switch(view.getId()) {
-            case R.id.BTblue:
-                index1 = 0;
-                T.setText("T : Blue");
-                torb = 1;
-                break;
-            case R.id.BTgreen:
-                index1 = 1;
-                T.setText("T : Green");
-                torb = 1;
-                break;
-            case R.id.BTbeige:
-                T.setText("T : Beige");
-                index1 = 2;
-                torb = 1;
-                break;
             case R.id.BTwhite:
                 T.setText("T : White");
-                index1 = 3;
-                torb = 1;
+                index = 0;
+                break;
+            case R.id.BTpink:
+                T.setText("T : Pink");
+                index = 1;
+                break;
+            case R.id.BTblue:
+                index = 2;
+                T.setText("T : Blue");
                 break;
             case R.id.BTblack:
                 T.setText("T : Black");
-                index1 = 4;
-                torb = 1;
-                break;
-            case R.id.BTgray:
-                T.setText("T : Gray");
-                index1 = 5;
-                torb = 1;
+                index = 3;
                 break;
         }
-        if(torb == 1){
-            clothesViewModel.setTshirtIndex(index1);
-            return;
-        }
+        clothesViewModel.setTshirtIndex(index);
+        return;
     }
 }
