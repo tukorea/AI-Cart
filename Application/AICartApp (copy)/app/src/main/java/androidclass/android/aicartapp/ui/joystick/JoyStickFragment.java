@@ -87,25 +87,25 @@ public class JoyStickFragment extends Fragment {
                             directionTextView.setText(R.string.front_lab);
                             break;
                         case JoystickView.FRONT_RIGHT:
-                            directionTextView.setText(R.string.front_right_lab);
+                            directionTextView.setText(R.string.left_front_lab);
                             break;
                         case JoystickView.RIGHT:
-                            directionTextView.setText(R.string.right_lab);
+                            directionTextView.setText(R.string.left_lab);
                             break;
                         case JoystickView.RIGHT_BOTTOM:
-                            directionTextView.setText(R.string.right_bottom_lab);
+                            directionTextView.setText(R.string.bottom_left_lab);
                             break;
                         case JoystickView.BOTTOM:
                             directionTextView.setText(R.string.bottom_lab);
                             break;
                         case JoystickView.BOTTOM_LEFT:
-                            directionTextView.setText(R.string.bottom_left_lab);
+                            directionTextView.setText(R.string.right_bottom_lab);
                             break;
                         case JoystickView.LEFT:
-                            directionTextView.setText(R.string.left_lab);
+                            directionTextView.setText(R.string.right_lab);
                             break;
                         case JoystickView.LEFT_FRONT:
-                            directionTextView.setText(R.string.left_front_lab);
+                            directionTextView.setText(R.string.front_right_lab);
                             break;
                         default:
                             directionTextView.setText(R.string.center_lab);
